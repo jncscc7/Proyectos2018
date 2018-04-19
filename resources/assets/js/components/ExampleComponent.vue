@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Inicio</li>
         <li class="breadcrumb-item"><a href="#">Administracion</a></li>
-        <li class="breadcrumb-item active">Nombre de la pagina...</li>
+        <li class="breadcrumb-item active">Directiva</li>
     </ol>
 
     <div class="container-fluid">
@@ -157,7 +157,7 @@
         <div class="modal-dialog modal-primary modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Agregar categoría</h4>
+                    <h4 class="modal-title">Agregar Categoria</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                     </button>
@@ -223,6 +223,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-danger">Eliminar</button>
                 </div>
+                
             </div>
 
             <!-- /.modal-content -->
@@ -235,8 +236,8 @@
 
     <!-- Fin del modal Eliminar -->
 
-
 </main>
+
 </template>
 
 <script>

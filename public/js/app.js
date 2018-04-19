@@ -3522,7 +3522,12 @@ window.Vue = __webpack_require__(36);
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
-  el: '#app'
+
+  el: '#app',
+  data: {
+    menu: 0
+  }
+
 });
 
 /***/ }),
@@ -47541,6 +47546,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -47572,7 +47578,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "breadcrumb-item active" }, [
-          _vm._v("Nombre de la pagina...")
+          _vm._v("Directiva")
         ])
       ]),
       _vm._v(" "),
@@ -47931,7 +47937,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h4", { staticClass: "modal-title" }, [
-                    _vm._v("Agregar categoría")
+                    _vm._v("Agregar Categoria")
                   ]),
                   _vm._v(" "),
                   _c(
