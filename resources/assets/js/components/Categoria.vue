@@ -241,9 +241,28 @@
 </template>
 
 <script>
-    export default {
+
+    export default{
+        data() {
+            return {
+                nombre : '',
+                descripccion : ''
+            }
+        },
+        methods  : {
+            listarCategoria (){
+                axios.get('/categoria').then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            }
+        },
         mounted() {
             console.log('Component mounted.')
         }
     }
+
 </script>
