@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Categorías
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNuevo">
+                <button type="button" @click="abrirModal('categoria', 'registrar')" class="btn btn-secondary">
                     <i class="icon-plus"></i>&nbsp;Nuevo
                 </button>
             </div>
@@ -43,80 +43,26 @@
                             <th>Estado</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
+                        <tr v-for="categoria in arrayCategoria" :key="categoria.id">
                             <td>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
+                                <button type="button" @click="abrirModal('categoria','actualizar', categoria)" class="btn btn-warning btn-sm" >
                                   <i class="icon-pencil"></i>
                                 </button> &nbsp;
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
+                                <button type="button" class="btn btn-danger btn-sm">
                                   <i class="icon-trash"></i>
                                 </button>
                             </td>
-                            <td>Hilados</td>
-                            <td>Alpandina</td>
+                            <td v-text="categoria.nombre"></td>
+                            <td v-text="categoria.descripccion"></td>
                             <td>
-                                <span class="badge badge-success">Activo</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                  <i class="icon-pencil"></i>
-                                </button> &nbsp;
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                  <i class="icon-trash"></i>
-                                </button>
-                            </td>
-                            <td>Hilados</td>
-                            <td>Alpandina</td>
-                            <td>
-                                <span class="badge badge-success">Activo</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                  <i class="icon-pencil"></i>
-                                </button> &nbsp;
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                  <i class="icon-trash"></i>
-                                </button>
-                            </td>
-                            <td>Hilados</td>
-                            <td>Alpandina</td>
-                            <td>
-                                <span class="badge badge-secondary">Inactivo</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                  <i class="icon-pencil"></i>
-                                </button> &nbsp;
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                  <i class="icon-trash"></i>
-                                </button>
-                            </td>
-                            <td>Hilados</td>
-                            <td>Alpandina</td>
-                            <td>
-                                <span class="badge badge-secondary">Inactivo</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                  <i class="icon-pencil"></i>
-                                </button>&nbsp;
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminar">
-                                  <i class="icon-trash"></i>
-                                </button>
-                            </td>
-                            <td>Hilados</td>
-                            <td>Alpandina</td>
-                            <td>
-                                <span class="badge badge-success">Activo</span>
+                                <div v-if="categoria.condicion">                            
+                                    <span class="badge badge-success">Activo</span>
+                                </div>
+                                <div v-else>
+                                    <span class="badge badge-danger">Desactivado</span>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -153,12 +99,12 @@
 
     <!--Inicio del modal agregar/actualizar-->
 
-    <div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" :class="{'mostrar' : modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-primary modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Agregar Categoria</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h4 class="modal-title" v-text="tituloModal"></h4>
+                    <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
                       <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -168,23 +114,32 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
                             <div class="col-md-9">
-                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de categoría">
-                                <span class="help-block">(*) Ingrese el nombre de la categoría</span>
+                                <input type="text" v-model="nombre" class="form-control" placeholder="Nombre de categoría">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
                             <div class="col-md-9">
-                                <input type="email" id="descripcion" name="descripcion" class="form-control" placeholder="Enter Email">
+                                <input type="email" v-model="descripcion" class="form-control" placeholder='Ingrese Descripcion'>
                             </div>
                         </div>
+
+                        <div v-show="errorCategoria" class="form-group row div-error">
+                            <div class="text-center text-error">
+                                <div v-for="error in errorMostrarMsjCategoria" :key="error" v-text="error">
+
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
+                    <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarCategoria()">Guardar</button>
+                    <button type="button" v-if="tipoAccion==2" class="btn btn-primary">Actualizar</button>
                 </div>
 
             </div>
@@ -198,6 +153,7 @@
     </div>
 
     <!--Fin del modal-->
+
     <!-- Inicio del modal Eliminar -->
 
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
@@ -246,23 +202,107 @@
         data() {
             return {
                 nombre : '',
-                descripccion : ''
+                descripcion : '',
+                arrayCategoria : [],
+                modal : 0,
+                tituloModal : '',
+                tipoAccion : 0,
+                errorCategoria : 0,
+                errorMostrarMsjCategoria : []
+
             }
         },
         methods  : {
             listarCategoria (){
+                let me=this;
                 axios.get('/categoria').then(function (response) {
-                    console.log(response);
+                    me.arrayCategoria = response.data;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+                
+            },
+            registrarCategoria (){
+                if (this.validarCategoria()){
+                    return;
+                }
+                let me = this;
 
+                axios.post('/categoria/registrar',{
+                    'nombre': this.nombre,
+                    'descripcion': this.descripcion
+                }).then(function (response) {
+                    me.cerrarModal();
+                    me.listarCategoria();
+                }).catch(function (error){
+                    console.log(error);
+                });
+            },
+            validarCategoria(){
+                this.errorCategoria = 0;
+                this.errorMostrarMsjCategoria =[];
+
+                if(!this.nombre) this.errorMostrarMsjCategoria.push("El nombre de la categoria no puede estar vacio");
+
+                if (this.errorMostrarMsjCategoria.length) this.errorCategoria = 1;
+
+                return this.errorCategoria;
+            },
+            cerrarModal(){
+                this.modal=0;
+                this.tituloModal='';
+                this.nombre='';
+                this.descripccion='';
+            },
+            abrirModal(modelo, accion, data = []){
+                switch(modelo){
+                    case "categoria":
+                    {
+                        switch (accion) {
+                            case 'registrar':
+                            {
+                                this.modal = 1;
+                                this.tituloModal = 'Registrar Categoria';
+                                this.nombre = '';
+                                this.descripcion = '';
+                                this.tipoAccion = 1;
+                                break;
+                            }
+                            case 'actualizar':
+                            {
+
+                            }
+
+                        }
+                    }
+
+                    
+                }
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            this.listarCategoria();
         }
     }
-
 </script>
+<style>
+    .modal-content{
+        width: 100% !important;
+        position: absolute !important;
+    }
+    .mostrar{
+        display: list-item !important;
+        opacity: 1 !important;
+        position: absolute !important;
+        background-color: #3c29297a !important;
+    }
+    .div-error{
+        display: flex;
+        justify-content: center;
+    }
+    .text-error{
+        color: red !important;
+        font-weight: bold;
+    }
+</style>

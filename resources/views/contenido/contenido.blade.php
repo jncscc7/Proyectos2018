@@ -21,7 +21,6 @@
     </template>
 
 
-
     <template v-if="menu==4">
         <categoria></categoria>
     </template>
