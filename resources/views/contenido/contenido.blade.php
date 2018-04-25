@@ -20,13 +20,13 @@
         <h1>contenido del menu 03</h1>
     </template>
 
-
     <template v-if="menu==4">
-        <categoria></categoria>
+        <h1>contenido del menu 04</h1>
     </template>
     
+    
     <template v-if="menu==5">
-        <h1>contenido del menu 05</h1>
+        <categoria></categoria>
     </template>
 
 
@@ -86,5 +86,9 @@
     <template v-if="menu==17">
             <h1>contenido del menu 017</h1>
     </template>
+
+    <template v-if="menu==18">
+        <h1>contenido del menu 017</h1>
+</template>
 
 @endsection

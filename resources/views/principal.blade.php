@@ -113,7 +113,7 @@
 
     <footer class="app-footer">
         <span><a href="http://www.jcalderon.net">JCalderon E.I.R.L.</a> &copy; 2018</span>
-        <span class="ml-auto">Desarrollado por <a href="http://www.jncs-systems.com">JnCs Ccosi</a></span>
+        <span class="ml-auto">Desarrollado por <a href="http://www.jncs-systems.pe.hu">JnCs Ccosi</a></span>
     </footer>
 
     <!-- Estructurado con node.js -->
