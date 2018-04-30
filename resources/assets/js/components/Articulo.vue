@@ -170,7 +170,7 @@
 </template>
 
 <script>
-    //import VueBarcode from 'vue-barcode';
+    import VueBarcode from 'vue-barcode';
     export default {
         data (){
             return {
@@ -202,9 +202,9 @@
                 arrayCategoria :[]
             }
         },
-        //components: {
-       // 'barcode': VueBarcode
-   // },
+        components: {
+       'barcode': VueBarcode
+        },
         computed:{
             isActived: function(){
                 return this.pagination.current_page;
