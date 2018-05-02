@@ -46,7 +46,7 @@
 
 
     <template v-if="menu==9">
-            <h1>contenido del menu 09</h1>
+        <proveedor></proveedor>
     </template>
 
     <template v-if="menu==10">
@@ -60,7 +60,7 @@
     </template>
 
     <template v-if="menu==12">
-            <h1>contenido del menu 012</h1>
+            <cliente></cliente>
     </template>
 
 
