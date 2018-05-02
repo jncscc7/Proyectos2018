@@ -65,13 +65,14 @@
 
 
     <template v-if="menu==13">
-            <h1>contenido del menu 013</h1>
+            <user></user>
     </template>
 
     <template v-if="menu==14">
-            <h1>contenido del menu 014</h1>
+            <rol></rol>
     </template>
 
+    
     <template v-if="menu==15">
             <h1>contenido del menu 015</h1>
     </template>

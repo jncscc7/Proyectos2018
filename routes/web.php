@@ -37,3 +37,11 @@ Route::get('/cliente', 'ClienteController@index');
 Route::post('/cliente/registrar', 'ClienteController@store');
 Route::put('/cliente/actualizar', 'ClienteController@update');
 
+Route::get('/rol', 'RolController@index');
+Route::get('/rol/selectRol', 'RolController@selectRol');
+
+Route::get('/user', 'UserController@index');
+Route::post('/user/registrar', 'UserController@store');
+Route::put('/user/actualizar', 'UserController@update');
+Route::put('/user/desactivar', 'UserController@desactivar');
+Route::put('/user/activar', 'UserController@activar');
