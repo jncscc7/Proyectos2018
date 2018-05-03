@@ -55071,6 +55071,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -55203,8 +55205,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errorPersona = 0;
             this.errorMostrarMsjPersona = [];
 
-            if (!this.nombre) this.errorMostrarMsjPersona.push("El nombre de la persona no puede estar vacío.");
-
+            if (!this.nombre) this.errorMostrarMsjPersona.push("El nombre del proveedor no puede estar vacío.");
+            if (!this.num_documento) this.errorMostrarMsjPersona.push("El numero de documento del proveedor no puede estar vacío.");
+            if (!this.direccion) this.errorMostrarMsjPersona.push("La direccion del proveedor no puede estar vacío.");
+            if (!this.telefono) this.errorMostrarMsjPersona.push("El numero del telefono no puede estar vacío.");
+            if (!this.contacto) this.errorMostrarMsjPersona.push("El nombre del contacto no puede estar vacío.");
             if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
             return this.errorPersona;
@@ -55550,7 +55555,7 @@ var render = function() {
       {
         staticClass: "modal fade",
         class: { mostrar: _vm.modal },
-        staticStyle: { display: "none" },
+        staticStyle: { "overflow-y": "scroll" },
         attrs: {
           tabindex: "-1",
           role: "dialog",

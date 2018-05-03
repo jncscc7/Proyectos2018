@@ -39,6 +39,7 @@
                                     <th>Teléfono</th>
                                     <th>Email</th>
                                     <th>Contacto</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,6 +56,7 @@
                                     <td v-text="persona.telefono"></td>
                                     <td v-text="persona.email"></td>
                                     <td v-text="persona.contacto"></td>
+                                    
                                 </tr>                                
                             </tbody>
                         </table>
@@ -76,7 +78,7 @@
                 <!-- Fin ejemplo de tabla Listado -->
             </div>
             <!--Inicio del modal agregar/actualizar-->
-            <div class="modal fade" tabindex="-1" :class="{'mostrar' : modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal fade" tabindex="-1" :class="{'mostrar' : modal}" role="dialog" aria-labelledby="myModalLabel" style="overflow-y: scroll;" aria-hidden="true">
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -297,8 +299,11 @@
                 this.errorPersona=0;
                 this.errorMostrarMsjPersona =[];
 
-                if (!this.nombre) this.errorMostrarMsjPersona.push("El nombre de la persona no puede estar vacío.");
-
+                if (!this.nombre) this.errorMostrarMsjPersona.push("El nombre del proveedor no puede estar vacío.");
+                if (!this.num_documento) this.errorMostrarMsjPersona.push("El numero de documento del proveedor no puede estar vacío.");
+                if (!this.direccion) this.errorMostrarMsjPersona.push("La direccion del proveedor no puede estar vacío.");
+                if (!this.telefono) this.errorMostrarMsjPersona.push("El numero del telefono no puede estar vacío.");
+                if (!this.contacto) this.errorMostrarMsjPersona.push("El nombre del contacto no puede estar vacío.");
                 if (this.errorMostrarMsjPersona.length) this.errorPersona = 1;
 
                 return this.errorPersona;
