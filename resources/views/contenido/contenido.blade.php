@@ -50,7 +50,7 @@
                 </template>
 
                 <template v-if="menu==11">
-                        <h1>VENTA menu 011</h1>
+                        <venta></venta>
                 </template>
         
                 <template v-if="menu==12">
@@ -108,7 +108,7 @@
                 </template>
 
                 <template v-if="menu==11">
-                        <h1>VENTA menu 011</h1>
+                        <venta></venta>
                 </template>
         
                 <template v-if="menu==12">
